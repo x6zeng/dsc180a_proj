@@ -58,6 +58,7 @@ def relevance_model(df, param, test_size, random_num, round_place, test):
     output = dict()
     output['Task'] = 'Predict for relevance'
     output['Model'] = 'Bernoulli Naive Bayes'
+    print(df_len)
     if test==True:
         output['Training Size'] = str(df_len)
     else:
@@ -66,6 +67,7 @@ def relevance_model(df, param, test_size, random_num, round_place, test):
     output['F1_score'] = f1
     output['Precision'] = precision
     output['Recall'] = recall
+    print('Training Bernoulli Naive Bayes to predict for relevance Finished')
     return output
 
 def sentiment_model(df, param, test_size, random_num, round_place, test):
@@ -111,4 +113,5 @@ def sentiment_model(df, param, test_size, random_num, round_place, test):
         output['Training Size'] = '9022'
     output['MSE'] = mse
     output['R_sqaured'] = r2
+    print('Training Random Forest to predict for sentiment Finished')
     return output
