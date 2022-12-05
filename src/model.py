@@ -25,12 +25,12 @@ def relevance_model(df, param, test_size, random_num, round_place):
     precision, recall, and f1 score of the prediction.
     """
     print('Training Bernoulli Naive Bayes to predict for relevance...')
-    # Balance the dataset
-    num_sample = 2000
     bucket_df_1 = df[df.Bucket=='1']
     bucket_df_2_3 = df[df.Bucket=='2 or 3']
-    b1_resample = resample(bucket_df_1, replace=False, n_samples=num_sample, random_state=random_num)
-    b2_3_resample = resample(bucket_df_2_3, replace=False, n_samples=num_sample, random_state=random_num)
+    df_len = min(bucket_df_1.shape[0], bucket_df_2_3.shape[0])
+    # Balance the dataset
+    b1_resample = resample(bucket_df_1, replace=True, n_samples=df_len, random_state=random_num)
+    b2_3_resample = resample(bucket_df_2_3, replace=True, n_samples=df_len, random_state=random_num)
     b_df_balanced = pd.concat([b1_resample, b2_3_resample])
     # Train test split
     train, test = train_test_split(b_df_balanced, random_state=random_num, test_size=test_size, shuffle=True)
