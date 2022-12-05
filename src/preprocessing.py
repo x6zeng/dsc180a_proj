@@ -40,7 +40,7 @@ def construct_features(df):
     #Perform label extraction on buckets
     ps = PorterStemmer()
     df["text_cleaned"] = [clean_text(t) for t in df["text"]]
-    df['tokenized_text'] = df['lemmatized_text'].apply(word_tokenize)   # tokenization
+    df['tokenized_text'] = df['text_cleaned'].apply(word_tokenize)   # tokenization
     df['stemmed_text'] = df['text_cleaned'].apply(lambda x: " ".join([ps.stem(word) for word in x.split()])) # stemming
     return df
     
