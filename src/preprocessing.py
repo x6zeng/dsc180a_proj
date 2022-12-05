@@ -2,10 +2,12 @@ import unidecode
 import emoji
 import re
 import numpy as np
+import nltk
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer, PorterStemmer
 from nltk.tokenize import word_tokenize
 
+nltk.download('wordnet')
 original_stopwords = stopwords.words('english')
 additional_stopwords = ['none']
 original_stopwords.extend(additional_stopwords)
