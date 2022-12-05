@@ -47,6 +47,7 @@ def construct_features(df):
     of text features.
     """
     #Perform label extraction on buckets
+    nltk.download('wordnet')
     ps = PorterStemmer()
     df["text_cleaned"] = [clean_text(t) for t in df["text"]]
     df['lemmatized_text'] = df['text'].apply(lambda text: lemmatize_words(text))    # lemmatization
