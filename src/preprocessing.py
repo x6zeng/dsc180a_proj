@@ -2,12 +2,10 @@ import unidecode
 import emoji
 import re
 import numpy as np
-import nltk
 from nltk.corpus import stopwords
-from nltk.stem import WordNetLemmatizer, PorterStemmer
+from nltk.stem import PorterStemmer
 from nltk.tokenize import word_tokenize
 
-nltk.download('wordnet')
 original_stopwords = stopwords.words('english')
 additional_stopwords = ['none']
 original_stopwords.extend(additional_stopwords)
@@ -34,23 +32,14 @@ def clean_text(text):
     temp = " ".join(word for word in temp)
     return temp
 
-def lemmatize_words(text):
-    """
-    This function takes in a text and lemmatize the words using WordNetLemmatizer.
-    """
-    lemmatizer = WordNetLemmatizer()
-    return " ".join([lemmatizer.lemmatize(word) for word in text.split()])
-
 def construct_features(df):
     """
     This function takes in a dataframe and cleans up the texts, and constructs a series
     of text features.
     """
     #Perform label extraction on buckets
-    nltk.download('wordnet')
     ps = PorterStemmer()
     df["text_cleaned"] = [clean_text(t) for t in df["text"]]
-    df['lemmatized_text'] = df['text'].apply(lambda text: lemmatize_words(text))    # lemmatization
     df['tokenized_text'] = df['lemmatized_text'].apply(word_tokenize)   # tokenization
     df['stemmed_text'] = df['text_cleaned'].apply(lambda x: " ".join([ps.stem(word) for word in x.split()])) # stemming
     return df
