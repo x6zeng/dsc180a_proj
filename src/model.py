@@ -19,7 +19,7 @@ def preprocessor():
     )
     return preprocessor
 
-def relevance_model(df, param, test_size, random_num, round_place, test):
+def relevance_model(df, param, test_size, random_num, round_place, testing):
     """This function trains a Bernoulli Naive Bayes to predict the 
     relevance label of the twitter data. It will outputs the accuracy,
     precision, recall, and f1 score of the prediction.
@@ -58,14 +58,10 @@ def relevance_model(df, param, test_size, random_num, round_place, test):
     output = dict()
     output['Task'] = 'Predict for relevance'
     output['Model'] = 'Bernoulli Naive Bayes'
-    print(df_len)
-    if test==True:
-        print('1')
+    if testing==True:
         output['Training Size'] = str(df_len)
     else:
-        print('2')
         output['Training Size'] = '4000'
-    print('3')
     output['Accuracy'] = accuracy
     output['F1_score'] = f1
     output['Precision'] = precision
@@ -73,7 +69,7 @@ def relevance_model(df, param, test_size, random_num, round_place, test):
     print('Training Bernoulli Naive Bayes to predict for relevance Finished')
     return output
 
-def sentiment_model(df, param, test_size, random_num, round_place, test):
+def sentiment_model(df, param, test_size, random_num, round_place, testing):
     """This function trains a Random Forest to predict the 
     sentiment score of the twitter data. It will outputs the MSE and R2
     of the prediction.
@@ -108,8 +104,6 @@ def sentiment_model(df, param, test_size, random_num, round_place, test):
     output = dict()
     output['Task'] = 'Predict for sentiment score'
     output['Model'] = 'Random Forest Regressor'
-    print(df) 
-    print(df.shape)
     if test==True:
         output['Training Size'] = str(df.shape[0])
     else:
