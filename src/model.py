@@ -103,6 +103,8 @@ def sentiment_model(df, param, test_size, random_num, round_place, test):
     output = dict()
     output['Task'] = 'Predict for sentiment score'
     output['Model'] = 'Random Forest Regressor'
+    print(df) 
+    print(df.shape)
     if test==True:
         output['Training Size'] = str(df.shape[0])
     else:
