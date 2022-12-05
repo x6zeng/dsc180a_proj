@@ -60,9 +60,12 @@ def relevance_model(df, param, test_size, random_num, round_place, test):
     output['Model'] = 'Bernoulli Naive Bayes'
     print(df_len)
     if test==True:
+        print('1')
         output['Training Size'] = str(df_len)
     else:
+        print('2')
         output['Training Size'] = '4000'
+    print('3')
     output['Accuracy'] = accuracy
     output['F1_score'] = f1
     output['Precision'] = precision
