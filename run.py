@@ -40,11 +40,11 @@ def main(targets):
         #Train and test models
         print('Train model begins')
         if 'test' in targets:
-            relevance_output = relevance_model(relevance_df, relevance_param, test_size, random_num, round_place, test=True)
-            sentiment_output = sentiment_model(sentiment_df, sentiment_param, test_size, random_num, round_place, test=True)
+            relevance_output = relevance_model(relevance_df, relevance_param, test_size, random_num, round_place, True)
+            sentiment_output = sentiment_model(sentiment_df, sentiment_param, test_size, random_num, round_place, True)
         else:
-            relevance_output = relevance_model(relevance_df, relevance_param, test_size, random_num, round_place, test=False)
-            sentiment_output = sentiment_model(sentiment_df, sentiment_param, test_size, random_num, round_place, test=False)
+            relevance_output = relevance_model(relevance_df, relevance_param, test_size, random_num, round_place, False)
+            sentiment_output = sentiment_model(sentiment_df, sentiment_param, test_size, random_num, round_place, False)
         print('Train model finishes')
         return [relevance_output, sentiment_output]
 
