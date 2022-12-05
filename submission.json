@@ -1,0 +1,4 @@
+{
+	"dockerhub-id": "tonyzeng7900/dsc180a_final_proj",
+	"build-script": "python run.py test"
+}
