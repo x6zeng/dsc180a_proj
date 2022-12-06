@@ -16,6 +16,8 @@ def main(targets):
         print('Load Data begins')
         if 'test' in targets:
             fp = os.path.join('data/test', 'data.csv')
+        else:
+            fp = os.path.join('data/raw', 'data.csv')
         relevance_df, sentiment_df = load_data(fp)
         print('Load Data finishes')
 
