@@ -29,8 +29,12 @@ def relevance_model(df, param, test_size, random_num, round_place, testing):
     bucket_df_2_3 = df[df.Bucket=='2 or 3']
     df_len = min(bucket_df_1.shape[0], bucket_df_2_3.shape[0])
     # Balance the dataset
-    b1_resample = resample(bucket_df_1, replace=True, n_samples=df_len, random_state=random_num)
-    b2_3_resample = resample(bucket_df_2_3, replace=True, n_samples=df_len, random_state=random_num)
+    if testing == True:
+        b1_resample = resample(bucket_df_1, replace=True, n_samples=df_len, random_state=random_num)
+        b2_3_resample = resample(bucket_df_2_3, replace=True, n_samples=df_len, random_state=random_num)
+    else:
+        b1_resample = resample(bucket_df_1, replace=False, n_samples=param['train_size'], random_state=random_num)
+        b2_3_resample = resample(bucket_df_2_3, replace=False, n_samples=param['train_size'], random_state=random_num)        
     b_df_balanced = pd.concat([b1_resample, b2_3_resample])
     # Train test split
     train, test = train_test_split(b_df_balanced, random_state=random_num, test_size=test_size, shuffle=True)

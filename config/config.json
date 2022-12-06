@@ -1,6 +1,7 @@
 {
 "bernoulli_naive_bayes_param": {
 	"fit_prior": true
+	"train_size": 2000
 },
 "random_forest_param": {
 	"max_depth": 1000,
