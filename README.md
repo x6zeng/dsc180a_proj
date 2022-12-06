@@ -23,7 +23,7 @@ Our raw dataset is located in this [Google Drive](https://drive.google.com/drive
 To run the project on the raw data, please follow the link above and download SentimentLabeled_10112022.csv, renamed the file as data.csv and saved it under the raw folder under the data folder.
 
 ## Running the project
-To run the code on test data:
-- run python run.py test
-To run the code on full data:
-- run python run.py
+* To run the code on test data:
+  - run python run.py test
+* To run the code on full data:
+  - run python run.py
